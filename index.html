@@ -49,7 +49,1214 @@
     </style>
 </head>
 <body class="bg-stone-50 text-stone-800">
-<!-- (Full HTML content continues here, as provided in your previous message) -->
-<!-- For brevity, the actual content will be written to the file, not shown in this message. -->
+
+    <header class="bg-white/80 backdrop-blur-lg sticky top-0 z-40 shadow-sm">
+        <nav class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16">
+                <div class="flex items-center">
+                    <span class="text-xl font-bold text-teal-700">🏋️‍♀️ Fitness Tracker</span>
+                </div>
+                <div class="hidden md:block">
+                    <div class="ml-10 flex items-baseline space-x-4">
+                        <a href="#dashboard" class="nav-link text-stone-600 hover:text-teal-600 px-3 py-2 rounded-md text-sm font-medium border-b-2 border-transparent">Dashboard</a>
+                        <a href="#log-workout" class="nav-link text-stone-600 hover:text-teal-600 px-3 py-2 rounded-md text-sm font-medium border-b-2 border-transparent">Log Workout</a>
+                        <a href="#progress" class="nav-link text-stone-600 hover:text-teal-600 px-3 py-2 rounded-md text-sm font-medium border-b-2 border-transparent">My Progress</a>
+                        <a href="#library" class="nav-link text-stone-600 hover:text-teal-600 px-3 py-2 rounded-md text-sm font-medium border-b-2 border-transparent">Exercise Library</a>
+                    </div>
+                </div>
+                 <div class="md:hidden">
+                    <button id="mobile-menu-button" class="inline-flex items-center justify-center p-2 rounded-md text-stone-400 hover:text-white hover:bg-teal-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-stone-800 focus:ring-white">
+                        <span class="sr-only">Open main menu</span>
+                        <svg class="block h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                        </svg>
+                    </button>
+                </div>
+            </div>
+             <div class="md:hidden hidden" id="mobile-menu">
+                <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+                    <a href="#dashboard" class="nav-link text-stone-600 hover:text-teal-600 block px-3 py-2 rounded-md text-base font-medium border-b-2 border-transparent">Dashboard</a>
+                    <a href="#log-workout" class="nav-link text-stone-600 hover:text-teal-600 block px-3 py-2 rounded-md text-base font-medium border-b-2 border-transparent">Log Workout</a>
+                    <a href="#progress" class="nav-link text-stone-600 hover:text-teal-600 block px-3 py-2 rounded-md text-base font-medium border-b-2 border-transparent">My Progress</a>
+                    <a href="#library" class="nav-link text-stone-600 hover:text-teal-600 block px-3 py-2 rounded-md text-base font-medium border-b-2 border-transparent">Exercise Library</a>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main class="container mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        
+        <section id="dashboard" class="py-12 min-h-screen">
+            <h1 class="text-4xl font-bold tracking-tight text-stone-900 sm:text-5xl">Welcome Back</h1>
+            <p class="mt-4 text-xl text-stone-600">Ready to crush your goals today? Here's your hub for logging workouts and tracking progress.</p>
+            <div class="mt-12 grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
+                <a href="#log-workout" class="group block p-8 bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-shadow duration-300">
+                    <h3 class="text-2xl font-bold text-teal-700">Log Today's Workout</h3>
+                    <p class="mt-2 text-stone-600">Start a new session, add your exercises, and record your sets, reps, and weight.</p>
+                </a>
+                <a href="#progress" class="group block p-8 bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-shadow duration-300">
+                    <h3 class="text-2xl font-bold text-teal-700">View My Progress</h3>
+                    <p class="mt-2 text-stone-600">Visualize your strength gains and review your entire workout history.</p>
+                </a>
+                <a href="#library" class="group block p-8 bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-shadow duration-300">
+                    <h3 class="text-2xl font-bold text-teal-700">Exercise Library</h3>
+                    <p class="mt-2 text-stone-600">Explore all available exercises, check form cues, and watch videos.</p>
+                </a>
+                <button id="open-plan-generator-btn" class="group block p-8 bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-shadow duration-300 text-left">
+                    <h3 class="text-2xl font-bold text-teal-700">Generate Workout Plan ✨</h3>
+                    <p class="mt-2 text-stone-600">Get a personalized workout plan based on your goals and equipment.</p>
+                </button>
+                <button id="open-create-template-btn" class="group block p-8 bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-shadow duration-300 text-left">
+                    <h3 class="text-2xl font-bold text-teal-700">Create New Template ✨</h3>
+                    <p class="mt-2 text-stone-600">Design and save your own reusable workout plan templates.</p>
+                </button>
+            </div>
+        </section>
+
+        <section id="log-workout" class="py-12 min-h-screen">
+             <div class="max-w-4xl mx-auto">
+                <h2 class="text-3xl font-bold text-stone-900">Log a New Workout</h2>
+                <p class="mt-2 text-lg text-stone-600">Fill in the details for your current training session. Your progress starts here.</p>
+                <div class="mt-8 p-8 bg-white rounded-2xl shadow-xl">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div>
+                            <label for="workout-name" class="block text-sm font-medium text-stone-700">Workout Name</label>
+                            <input type="text" id="workout-name" class="mt-1 block w-full rounded-md border-stone-300 shadow-sm focus:border-teal-500 focus:ring-teal-500 sm:text-sm" placeholder="e.g., Morning Push Day">
+                        </div>
+                        <div>
+                            <label for="workout-date" class="block text-sm font-medium text-stone-700">Date</label>
+                            <input type="date" id="workout-date" class="mt-1 block w-full rounded-md border-stone-300 shadow-sm focus:border-teal-500 focus:ring-teal-500 sm:text-sm">
+                        </div>
+                    </div>
+                    <div class="mt-8">
+                        <h3 class="text-xl font-semibold text-stone-800">Load Template</h3>
+                        <div class="flex items-end gap-4 mt-2">
+                            <div class="flex-grow">
+                                <label for="workout-template-select" class="block text-sm font-medium text-stone-700">Select Template</label>
+                                <select id="workout-template-select" class="mt-1 block w-full rounded-md border-stone-300 shadow-sm focus:border-teal-500 focus:ring-teal-500 sm:text-sm">
+                                    <option value="">-- Select a template --</option>
+                                </select>
+                            </div>
+                            <button id="load-template-btn" class="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-teal-600 hover:bg-teal-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-teal-500">
+                                Load Template
+                            </button>
+                        </div>
+                    </div>
+                    <div class="mt-8">
+                        <h3 class="text-xl font-semibold text-stone-800">Exercises</h3>
+                        <div id="logged-exercises-container" class="mt-4 space-y-6">
+                        </div>
+                        <button id="add-exercise-btn" class="mt-4 inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-teal-600 hover:bg-teal-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-teal-500">
+                            Add Exercise
+                        </button>
+                    </div>
+                     <div class="mt-8 border-t pt-6 flex justify-end">
+                        <button id="save-workout-btn" class="inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-md shadow-sm text-white bg-teal-600 hover:bg-teal-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-teal-500">
+                            Save Workout
+                        </button>
+                    </div>
+                    <div id="workout-summary-section" class="mt-8 p-4 bg-stone-50 rounded-md border border-stone-200 hidden">
+                        <h3 class="text-xl font-semibold text-stone-800 mb-4">Workout Analysis ✨</h3>
+                        <div id="workout-summary-output" class="text-stone-700"></div>
+                        <button id="generate-summary-btn" class="mt-4 inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-teal-600 hover:bg-teal-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-teal-500">
+                            Generate Summary
+                            <span id="summary-loading" class="loading-spinner ml-2 hidden"></span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="progress" class="py-12 min-h-screen">
+            <h2 class="text-3xl font-bold text-stone-900">My Progress</h2>
+            <p class="mt-2 text-lg text-stone-600">Select an exercise to see how your strength has improved over time.</p>
+            <div class="mt-8">
+                <label for="progress-exercise-select" class="block text-sm font-medium text-stone-700">Select Exercise</label>
+                <select id="progress-exercise-select" class="mt-1 block w-full max-w-xs rounded-md border-stone-300 shadow-sm focus:border-teal-500 focus:ring-teal-500 sm:text-sm"></select>
+            </div>
+            <div class="mt-8 bg-white p-4 sm:p-6 rounded-2xl shadow-xl">
+                <div class="chart-container">
+                    <canvas id="progressChart"></canvas>
+                </div>
+            </div>
+            <div class="mt-8">
+                <h3 class="text-xl font-semibold text-stone-800">Log History for <span id="history-exercise-name"></span></h3>
+                <div class="mt-4 overflow-x-auto bg-white rounded-2xl shadow-xl">
+                    <table class="min-w-full divide-y divide-stone-200">
+                        <thead class="bg-stone-50">
+                            <tr>
+                                <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-stone-500 uppercase tracking-wider">Date</th>
+                                <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-stone-500 uppercase tracking-wider">Sets</th>
+                                <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-stone-500 uppercase tracking-wider">Reps</th>
+                                <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-stone-500 uppercase tracking-wider">Weight (lbs)</th>
+                            </tr>
+                        </thead>
+                        <tbody id="progress-history-table" class="bg-white divide-y divide-stone-200">
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+        <section id="library" class="py-12 min-h-screen">
+            <h2 class="text-3xl font-bold text-stone-900">Exercise Library</h2>
+            <p class="mt-2 text-lg text-stone-600">Browse and filter exercises to build your workout routine.</p>
+             <div class="mt-8 flex flex-wrap gap-2">
+                <button data-filter-type="muscle" data-filter-value="All" class="filter-btn-muscle active-filter px-4 py-2 text-sm font-medium rounded-full bg-teal-600 text-white">All Muscles</button>
+            </div>
+             <div id="exercise-library-grid" class="mt-8 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+            </div>
+        </section>
+    </main>
+
+    <div id="exercise-modal" class="hidden fixed inset-0 bg-stone-900 bg-opacity-75 z-50 modal-backdrop">
+        <div class="flex items-center justify-center min-h-screen">
+            <div class="bg-white rounded-2xl shadow-2xl m-4 max-w-lg w-full transform transition-all duration-300 scale-95 opacity-0" id="modal-panel">
+            </div>
+        </div>
+    </div>
+
+    <div id="add-exercise-modal" class="hidden fixed inset-0 bg-stone-900 bg-opacity-75 z-[51] modal-backdrop">
+        <div class="flex items-center justify-center min-h-screen">
+             <div class="bg-white rounded-2xl shadow-2xl m-4 max-w-2xl w-full transform transition-all duration-300 scale-95 opacity-0" id="add-exercise-modal-panel">
+                <div class="p-6">
+                    <div class="flex justify-between items-center">
+                        <h3 class="text-2xl font-bold">Select an Exercise</h3>
+                        <button id="close-add-exercise-modal" class="text-stone-400 hover:text-stone-600">&times;</button>
+                    </div>
+                    <input type="text" id="add-exercise-search" class="mt-4 block w-full rounded-md border-stone-300 shadow-sm focus:border-teal-500 focus:ring-teal-500 sm:text-sm" placeholder="Search exercises...">
+                    <div id="add-exercise-list" class="mt-4 space-y-2 max-h-96 overflow-y-auto"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="plan-generator-modal" class="hidden fixed inset-0 bg-stone-900 bg-opacity-75 z-50 modal-backdrop">
+        <div class="flex items-center justify-center min-h-screen">
+            <div class="bg-white rounded-2xl shadow-2xl m-4 max-w-3xl w-full transform transition-all duration-300 scale-95 opacity-0" id="plan-generator-modal-panel">
+                <div class="p-6">
+                    <div class="flex justify-between items-center">
+                        <h3 class="text-2xl font-bold">Generate Workout Plan ✨</h3>
+                        <button id="close-plan-generator-modal" class="text-stone-400 hover:text-stone-600">&times;</button>
+                    </div>
+                    <div class="mt-6 grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div>
+                            <label for="goal-select" class="block text-sm font-medium text-stone-700">Fitness Goal</label>
+                            <select id="goal-select" class="mt-1 block w-full rounded-md border-stone-300 shadow-sm focus:border-teal-500 focus:ring-teal-500 sm:text-sm">
+                                <option value="muscle gain">Muscle Gain</option>
+                                <option value="weight loss">Weight Loss</option>
+                                <option value="endurance">Endurance</option>
+                                <option value="strength">Strength</option>
+                                <option value="flexibility">Flexibility</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label for="equipment-select" class="block text-sm font-medium text-stone-700">Available Equipment</label>
+                            <select id="equipment-select" class="mt-1 block w-full rounded-md border-stone-300 shadow-sm focus:border-teal-500 focus:ring-teal-500 sm:text-sm">
+                                <option value="full gym">Full Gym</option>
+                                <option value="dumbbells only">Dumbbells Only</option>
+                                <option value="bodyweight only">Bodyweight Only</option>
+                                <option value="barbell and dumbbells">Barbell & Dumbbells</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label for="frequency-select" class="block text-sm font-medium text-stone-700">Workouts per Week</label>
+                            <select id="frequency-select" class="mt-1 block w-full rounded-md border-stone-300 shadow-sm focus:border-teal-500 focus:ring-teal-500 sm:text-sm">
+                                <option value="3">3 times/week</option>
+                                <option value="4">4 times/week</option>
+                                <option value="5">5 times/week</option>
+                                <option value="6">6 times/week</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label for="duration-select" class="block text-sm font-medium text-stone-700">Minutes per Session</label>
+                            <select id="duration-select" class="mt-1 block w-full rounded-md border-stone-300 shadow-sm focus:border-teal-500 focus:ring-teal-500 sm:text-sm">
+                                <option value="30">30 minutes</option>
+                                <option value="45">45 minutes</option>
+                                <option value="60">60 minutes</option>
+                                <option value="90">90 minutes</option>
+                            </select>
+                        </div>
+                    </div>
+                    <button id="generate-plan-btn" class="mt-8 w-full inline-flex items-center justify-center px-6 py-3 border border-transparent text-base font-medium rounded-md shadow-sm text-white bg-teal-600 hover:bg-teal-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-teal-500">
+                        Generate Plan
+                        <span id="plan-generator-loading" class="loading-spinner ml-2 hidden"></span>
+                    </button>
+                    <div id="generated-plan-output" class="mt-8 p-4 bg-stone-50 rounded-md border border-stone-200 max-h-96 overflow-y-auto">
+                        <p class="text-stone-500">Your personalized workout plan will appear here.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="create-template-modal" class="hidden fixed inset-0 bg-stone-900 bg-opacity-75 z-50 modal-backdrop">
+        <div class="flex items-center justify-center min-h-screen">
+            <div class="bg-white rounded-2xl shadow-2xl m-4 max-w-3xl w-full transform transition-all duration-300 scale-95 opacity-0" id="create-template-modal-panel">
+                <div class="p-6">
+                    <div class="flex justify-between items-center">
+                        <h3 class="text-2xl font-bold">Create New Workout Template ✨</h3>
+                        <button id="close-create-template-modal" class="text-stone-400 hover:text-stone-600">&times;</button>
+                    </div>
+                    <div class="mt-6">
+                        <label for="new-template-name" class="block text-sm font-medium text-stone-700">Template Name</label>
+                        <input type="text" id="new-template-name" class="mt-1 block w-full rounded-md border-stone-300 shadow-sm focus:border-teal-500 focus:ring-teal-500 sm:text-sm" placeholder="e.g., My Custom Full Body">
+                    </div>
+                    <div class="mt-8">
+                        <h3 class="text-xl font-semibold text-stone-800">Exercises in Template</h3>
+                        <div id="template-exercises-container" class="mt-4 space-y-6">
+                            <p class="text-stone-500">Add exercises to your template below.</p>
+                        </div>
+                        <button id="add-template-exercise-btn" class="mt-4 inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-teal-600 hover:bg-teal-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-teal-500">
+                            Add Exercise to Template
+                        </button>
+                    </div>
+                    <button id="save-template-btn" class="mt-8 w-full inline-flex items-center justify-center px-6 py-3 border border-transparent text-base font-medium rounded-md shadow-sm text-white bg-teal-600 hover:bg-teal-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-teal-500">
+                        Save Template
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div id="toast" class="hidden fixed bottom-5 right-5 bg-teal-600 text-white px-6 py-3 rounded-lg shadow-lg transform transition-transform duration-500 translate-y-20">
+        <p id="toast-message"></p>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+
+            const exercises = [
+                { id: 1, name: 'Barbell Squat', type: 'Strength', targetMuscles: ['Quads', 'Glutes', 'Hamstrings'], equipment: 'Barbell', notes: 'Keep your chest up and back straight. Squat until your thighs are parallel to the floor.', videoUrl: 'https://www.youtube.com/embed/bEv6CCg2BC8', imageUrl: 'https://placehold.co/600x400/e2e8f0/334155?text=Barbell+Squat' },
+                { id: 2, name: 'Dumbbell Bench Press', type: 'Strength', targetMuscles: ['Chest', 'Triceps', 'Shoulders'], equipment: 'Dumbbells', notes: 'Lower the dumbbells to chest level. Push them back up to the starting position.', videoUrl: 'https://www.youtube.com/embed/Y_7aHqXeCfM', imageUrl: 'https://placehold.co/600x400/e2e8f0/334155?text=Bench+Press' },
+                { id: 3, name: 'Overhead Press', type: 'Strength', targetMuscles: ['Shoulders', 'Triceps'], equipment: 'Barbell', notes: 'Press the barbell overhead until your arms are fully extended. Keep your core tight.', videoUrl: 'https://www.youtube.com/embed/2yjwXTZQDDI', imageUrl: 'https://placehold.co/600x400/e2e8f0/334155?text=Overhead+Press' },
+                { id: 4, name: 'Deadlift', type: 'Strength', targetMuscles: ['Back', 'Glutes', 'Hamstrings'], equipment: 'Barbell', notes: 'Maintain a neutral spine throughout the lift. Drive through your heels.', videoUrl: 'https://www.youtube.com/embed/ytGaGIn3SjE', imageUrl: 'https://placehold.co/600x400/e2e8f0/334155?text=Deadlift' },
+                { id: 5, name: 'Bicep Curl', type: 'Strength', targetMuscles: ['Biceps'], equipment: 'Dumbbells', notes: 'Keep your elbows close to your torso and avoid using momentum.', videoUrl: 'https://www.youtube.com/embed/ykJmrZ5v0Oo', imageUrl: 'https://placehold.co/600x400/e2e8f0/334155?text=Bicep+Curl' },
+                { id: 6, name: 'Plank', type: 'Strength', targetMuscles: ['Core'], equipment: 'Bodyweight', notes: 'Engage your core and glutes to keep your body in a straight line.', videoUrl: 'https://www.youtube.com/embed/pSHjTRCQxIw', imageUrl: 'https://placehold.co/600x400/e2e8f0/334155?text=Plank' },
+                { id: 7, name: 'Running', type: 'Cardio', targetMuscles: ['Quads', 'Hamstrings', 'Core'], equipment: 'Bodyweight', notes: 'Maintain a consistent pace and good running form.', videoUrl: 'https://www.youtube.com/embed/wRkeBVMQSgg', imageUrl: 'https://placehold.co/600x400/e2e8f0/334155?text=Running' }
+            ];
+
+            let workoutTemplates = [
+                {
+                    id: 1,
+                    name: 'Full Body Strength (Beginner)',
+                    exercises: [
+                        { exerciseId: 1, defaultSets: 3, defaultReps: 8 }, // Barbell Squat
+                        { exerciseId: 2, defaultSets: 3, defaultReps: 10 }, // Dumbbell Bench Press
+                        { exerciseId: 3, defaultSets: 3, defaultReps: 8 }, // Overhead Press
+                        { exerciseId: 4, defaultSets: 3, defaultReps: 5 }, // Deadlift
+                        { exerciseId: 6, defaultSets: 3, defaultReps: 30 } // Plank (seconds)
+                    ]
+                },
+                {
+                    id: 2,
+                    name: 'Upper Body Focus',
+                    exercises: [
+                        { exerciseId: 2, defaultSets: 4, defaultReps: 8 }, // Dumbbell Bench Press
+                        { exerciseId: 3, defaultSets: 4, defaultReps: 8 }, // Overhead Press
+                        { exerciseId: 5, defaultSets: 3, defaultReps: 12 }, // Bicep Curl
+                        { exerciseId: 1, defaultSets: 3, defaultReps: 10 } // Barbell Squat (for balance)
+                    ]
+                },
+                {
+                    id: 3,
+                    name: 'Lower Body Focus',
+                    exercises: [
+                        { exerciseId: 1, defaultSets: 4, defaultReps: 6 }, // Barbell Squat
+                        { exerciseId: 4, defaultSets: 3, defaultReps: 5 }, // Deadlift
+                        { exerciseId: 6, defaultSets: 4, defaultReps: 45 }, // Plank
+                        { exerciseId: 7, defaultSets: 1, defaultReps: '20 min' } // Running
+                    ]
+                }
+            ];
+
+            let workoutLogs = [
+                {
+                    name: "Full Body Strength",
+                    date: "2025-06-15",
+                    exercises: [
+                        { id: 1, name: 'Barbell Squat', sets: [{ reps: 5, weight: 205 }, { reps: 5, weight: 205 }, { reps: 5, weight: 205 }] },
+                        { id: 2, name: 'Dumbbell Bench Press', sets: [{ reps: 8, weight: 50 }, { reps: 8, weight: 50 }, { reps: 8, weight: 50 }] }
+                    ]
+                },
+                {
+                    name: "Push Day",
+                    date: "2025-06-22",
+                    exercises: [
+                        { id: 1, name: 'Barbell Squat', sets: [{ reps: 5, weight: 215 }, { reps: 5, weight: 215 }, { reps: 5, weight: 225 }] },
+                        { id: 3, name: 'Overhead Press', sets: [{ reps: 5, weight: 105 }, { reps: 5, weight: 105 }, { reps: 5, weight: 115 }] }
+                    ]
+                },
+                {
+                    name: "Leg Day",
+                    date: "2025-06-29",
+                    exercises: [
+                        { id: 1, name: 'Barbell Squat', sets: [{ reps: 5, weight: 225 }, { reps: 5, weight: 225 }, { reps: 3, weight: 235 }] },
+                        { id: 4, name: 'Deadlift', sets: [{ reps: 3, weight: 305 }, { reps: 3, weight: 315 }] }
+                    ]
+                }
+            ];
+
+            let progressChart;
+            let currentWorkout = [];
+            let currentNewTemplateExercises = []; // New state for template creation
+
+            const showToast = (message) => {
+                const toast = document.getElementById('toast');
+                const toastMessage = document.getElementById('toast-message');
+                toastMessage.textContent = message;
+                toast.classList.remove('hidden');
+                setTimeout(() => toast.classList.remove('translate-y-20'), 10);
+                setTimeout(() => {
+                    toast.classList.add('translate-y-20');
+                    setTimeout(() => toast.classList.add('hidden'), 500);
+                }, 3000);
+            };
+
+            const renderExerciseLibrary = (filter = { type: 'muscle', value: 'All' }) => {
+                const grid = document.getElementById('exercise-library-grid');
+                grid.innerHTML = '';
+                const filteredExercises = exercises.filter(ex => {
+                    if (filter.value === 'All') return true;
+                    if (filter.type === 'muscle') return ex.targetMuscles.includes(filter.value);
+                    return true;
+                });
+
+                filteredExercises.forEach(ex => {
+                    const card = document.createElement('div');
+                    card.className = 'bg-white rounded-lg shadow-md overflow-hidden cursor-pointer transform hover:-translate-y-1 transition-transform duration-300';
+                    card.innerHTML = `
+                        <img src="${ex.imageUrl}" alt="${ex.name}" class="w-full h-40 object-cover">
+                        <div class="p-4">
+                            <h4 class="font-bold text-lg">${ex.name}</h4>
+                            <div class="flex flex-wrap gap-1 mt-2">
+                                ${ex.targetMuscles.map(m => `<span class="text-xs bg-teal-100 text-teal-800 px-2 py-1 rounded-full">${m}</span>`).join('')}
+                            </div>
+                        </div>
+                    `;
+                    card.addEventListener('click', () => openExerciseModal(ex.id));
+                    grid.appendChild(card);
+                });
+            };
+            
+            const openExerciseModal = (exerciseId) => {
+                const exercise = exercises.find(ex => ex.id === exerciseId);
+                const modal = document.getElementById('exercise-modal');
+                const panel = document.getElementById('modal-panel');
+                panel.innerHTML = `
+                    <div class="relative">
+                        <button class="absolute top-4 right-4 text-stone-500 hover:text-stone-800" onclick="document.getElementById('exercise-modal').dispatchEvent(new Event('close-modal'))">&times;</button>
+                        <div class="aspect-w-16 aspect-h-9">
+                            <iframe class="w-full h-full rounded-t-2xl" src="${exercise.videoUrl}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                        </div>
+                        <div class="p-6">
+                            <h3 class="text-2xl font-bold">${exercise.name}</h3>
+                            <div class="flex flex-wrap gap-2 mt-2">
+                                ${exercise.targetMuscles.map(m => `<span class="text-sm bg-teal-100 text-teal-800 px-2 py-1 rounded-full">${m}</span>`).join('')}
+                                <span class="text-sm bg-stone-100 text-stone-800 px-2 py-1 rounded-full">${exercise.equipment}</span>
+                            </div>
+                            <p class="mt-4 text-stone-600">${exercise.notes}</p>
+                            <button id="suggest-variations-btn" data-exercise-name="${exercise.name}" class="mt-6 w-full inline-flex items-center justify-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-teal-600 hover:bg-teal-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-teal-500">
+                                Suggest Variations ✨
+                                <span id="variations-loading" class="loading-spinner ml-2 hidden"></span>
+                            </button>
+                            <div id="variations-output" class="mt-4 p-3 bg-stone-50 rounded-md border border-stone-200 hidden"></div>
+                            <button id="get-injury-tips-btn" data-exercise-name="${exercise.name}" data-target-muscles="${exercise.targetMuscles.join(',')}" class="mt-4 w-full inline-flex items-center justify-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-teal-600 hover:bg-teal-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-teal-500">
+                                Injury Prevention Tips ✨
+                                <span id="injury-tips-loading" class="loading-spinner ml-2 hidden"></span>
+                            </button>
+                            <div id="injury-tips-output" class="mt-4 p-3 bg-stone-50 rounded-md border border-stone-200 hidden"></div>
+                        </div>
+                    </div>
+                `;
+                modal.classList.remove('hidden');
+                setTimeout(() => {
+                    panel.classList.remove('scale-95', 'opacity-0');
+                    modal.classList.remove('opacity-0');
+                }, 10);
+
+                document.getElementById('suggest-variations-btn').addEventListener('click', async (e) => {
+                    const exerciseName = e.target.dataset.exerciseName;
+                    await suggestExerciseVariations(exerciseName);
+                });
+
+                document.getElementById('get-injury-tips-btn').addEventListener('click', async (e) => {
+                    const exerciseName = e.target.dataset.exerciseName;
+                    const targetMuscles = e.target.dataset.targetMuscles;
+                    await getInjuryPreventionTips(exerciseName, targetMuscles);
+                });
+            };
+            
+            const closeExerciseModal = () => {
+                const modal = document.getElementById('exercise-modal');
+                const panel = document.getElementById('modal-panel');
+                panel.classList.add('scale-95', 'opacity-0');
+                modal.classList.add('opacity-0');
+                setTimeout(() => modal.classList.add('hidden'), 300);
+            };
+            document.getElementById('exercise-modal').addEventListener('click', (e) => {
+                if(e.target.id === 'exercise-modal') closeExerciseModal();
+            });
+            document.getElementById('exercise-modal').addEventListener('close-modal', closeExerciseModal);
+
+
+            const populateFilterButtons = () => {
+                const container = document.querySelector('[data-filter-type="muscle"]').parentElement;
+                const muscles = [...new Set(exercises.flatMap(e => e.targetMuscles))];
+                muscles.forEach(muscle => {
+                    const button = document.createElement('button');
+                    button.dataset.filterType = 'muscle';
+                    button.dataset.filterValue = muscle;
+                    button.className = 'filter-btn-muscle px-4 py-2 text-sm font-medium rounded-full bg-white text-stone-600 hover:bg-stone-100';
+                    button.textContent = muscle;
+                    container.appendChild(button);
+                });
+
+                container.addEventListener('click', e => {
+                    if (e.target.matches('.filter-btn-muscle')) {
+                        document.querySelectorAll('.filter-btn-muscle').forEach(btn => btn.classList.remove('active-filter', 'bg-teal-600', 'text-white'));
+                        e.target.classList.add('active-filter', 'bg-teal-600', 'text-white');
+                        const filterType = e.target.dataset.filterType;
+                        const filterValue = e.target.dataset.filterValue;
+                        renderExerciseLibrary({ type: filterType, value: filterValue });
+                    }
+                });
+            };
+
+            const populateProgressSelect = () => {
+                const select = document.getElementById('progress-exercise-select');
+                select.innerHTML = '';
+                exercises.forEach(ex => {
+                    const option = document.createElement('option');
+                    option.value = ex.name;
+                    option.textContent = ex.name;
+                    select.appendChild(option);
+                });
+                select.addEventListener('change', (e) => updateProgressChart(e.target.value));
+                if (exercises.length > 0) {
+                    updateProgressChart(exercises[0].name);
+                }
+            };
+            
+            const updateProgressChart = (exerciseName) => {
+                const data = {
+                    labels: [],
+                    datasets: [{
+                        label: `Max Weight Lifted (lbs)`,
+                        data: [],
+                        borderColor: '#0d9488',
+                        backgroundColor: 'rgba(13, 148, 136, 0.1)',
+                        fill: true,
+                        tension: 0.1
+                    }]
+                };
+
+                const history = [];
+
+                workoutLogs
+                    .sort((a, b) => new Date(a.date) - new Date(b.date))
+                    .forEach(log => {
+                        const performedExercise = log.exercises.find(e => e.name === exerciseName);
+                        if (performedExercise) {
+                            const maxWeight = Math.max(...performedExercise.sets.map(s => s.weight));
+                            data.labels.push(log.date);
+                            data.datasets[0].data.push(maxWeight);
+                            
+                            performedExercise.sets.forEach(set => {
+                                history.push({date: log.date, sets: 1, reps: set.reps, weight: set.weight });
+                            });
+                        }
+                    });
+
+                const ctx = document.getElementById('progressChart').getContext('2d');
+                if (progressChart) {
+                    progressChart.destroy();
+                }
+                progressChart = new Chart(ctx, {
+                    type: 'line',
+                    data: data,
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        scales: {
+                            y: { beginAtZero: true, title: { display: true, text: 'Weight (lbs)' } },
+                            x: { title: { display: true, text: 'Date' } }
+                        }
+                    }
+                });
+                
+                updateProgressHistoryTable(exerciseName, history);
+            };
+            
+            const updateProgressHistoryTable = (exerciseName, history) => {
+                 document.getElementById('history-exercise-name').textContent = exerciseName;
+                 const tableBody = document.getElementById('progress-history-table');
+                 tableBody.innerHTML = '';
+                 if(history.length === 0){
+                     tableBody.innerHTML = `<tr><td colspan="4" class="text-center py-4 text-stone-500">No logs found for this exercise.</td></tr>`;
+                     return;
+                 }
+                 history.reverse().forEach(log => {
+                     const row = document.createElement('tr');
+                     row.innerHTML = `
+                        <td class="px-6 py-4 whitespace-nowrap text-sm text-stone-500">${log.date}</td>
+                        <td class="px-6 py-4 whitespace-nowrap text-sm text-stone-500">${log.sets}</td>
+                        <td class="px-6 py-4 whitespace-nowrap text-sm text-stone-500">${log.reps}</td>
+                        <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-stone-900">${log.weight}</td>
+                     `;
+                     tableBody.appendChild(row);
+                 });
+            };
+
+            const renderLoggedExercises = () => {
+                const container = document.getElementById('logged-exercises-container');
+                container.innerHTML = '';
+                currentWorkout.forEach((ex, index) => {
+                    const exerciseData = exercises.find(e => e.id === ex.id);
+                    const exerciseDiv = document.createElement('div');
+                    exerciseDiv.className = 'p-4 border rounded-lg bg-stone-50';
+                    exerciseDiv.innerHTML = `
+                        <div class="flex justify-between items-center">
+                            <h4 class="font-semibold text-lg">${exerciseData.name}</h4>
+                            <button data-index="${index}" class="remove-exercise-btn text-red-500 hover:text-red-700">&times;</button>
+                        </div>
+                        <div class="mt-2 text-xs text-stone-500">${exerciseData.targetMuscles.join(', ')}</div>
+                        <table class="w-full mt-2 text-sm text-left">
+                            <thead>
+                                <tr>
+                                    <th class="py-1 pr-2 w-1/4">Set</th>
+                                    <th class="py-1 px-2 w-1/4">Reps</th>
+                                    <th class="py-1 px-2 w-1/4">Weight (lbs)</th>
+                                    <th class="py-1 pl-2 w-1/4"></th>
+                                </tr>
+                            </thead>
+                            <tbody class="sets-container">
+                            </tbody>
+                        </table>
+                        <button data-index="${index}" class="add-set-btn mt-2 text-sm text-teal-600 hover:text-teal-800 font-medium">+ Add Set</button>
+                    `;
+                    const setsContainer = exerciseDiv.querySelector('.sets-container');
+                    ex.sets.forEach((set, setIndex) => {
+                        const setRow = document.createElement('tr');
+                        setRow.innerHTML = `
+                            <td class="py-1 pr-2">${setIndex + 1}</td>
+                            <td class="py-1 px-2"><input type="number" value="${set.reps}" class="w-full rounded-md border-stone-300 text-sm p-1 reps-input" data-ex-index="${index}" data-set-index="${setIndex}"></td>
+                            <td class="py-1 px-2"><input type="number" value="${set.weight}" class="w-full rounded-md border-stone-300 text-sm p-1 weight-input" data-ex-index="${index}" data-set-index="${setIndex}"></td>
+                            <td class="py-1 pl-2 text-right"><button class="remove-set-btn text-xs text-red-400 hover:text-red-600" data-ex-index="${index}" data-set-index="${setIndex}">Remove</button></td>
+                        `;
+                        setsContainer.appendChild(setRow);
+                    });
+                    container.appendChild(exerciseDiv);
+                });
+            };
+
+            document.getElementById('logged-exercises-container').addEventListener('click', e => {
+                if(e.target.matches('.add-set-btn')){
+                    const index = parseInt(e.target.dataset.index);
+                    currentWorkout[index].sets.push({reps: 0, weight: 0});
+                    renderLoggedExercises();
+                }
+                if(e.target.matches('.remove-exercise-btn')){
+                    const index = parseInt(e.target.dataset.index);
+                    currentWorkout.splice(index, 1);
+                    renderLoggedExercises();
+                }
+                if(e.target.matches('.remove-set-btn')){
+                    const exIndex = parseInt(e.target.dataset.exIndex);
+                    const setIndex = parseInt(e.target.dataset.setIndex);
+                    currentWorkout[exIndex].sets.splice(setIndex, 1);
+                    renderLoggedExercises();
+                }
+            });
+            
+            document.getElementById('logged-exercises-container').addEventListener('input', e => {
+                const exIndex = parseInt(e.target.dataset.exIndex);
+                const setIndex = parseInt(e.target.dataset.setIndex);
+                if(e.target.matches('.reps-input')){
+                    currentWorkout[exIndex].sets[setIndex].reps = parseInt(e.target.value) || 0;
+                }
+                if(e.target.matches('.weight-input')){
+                     currentWorkout[exIndex].sets[setIndex].weight = parseInt(e.target.value) || 0;
+                }
+            });
+
+            document.getElementById('add-exercise-btn').addEventListener('click', () => {
+                const modal = document.getElementById('add-exercise-modal');
+                const panel = document.getElementById('add-exercise-modal-panel');
+                renderAddExerciseList('log'); // Indicate this is for logging a workout
+                modal.classList.remove('hidden');
+                setTimeout(() => {
+                    panel.classList.remove('scale-95', 'opacity-0');
+                    modal.classList.remove('opacity-0');
+                }, 10);
+            });
+            
+            const closeAddExerciseModal = () => {
+                const modal = document.getElementById('add-exercise-modal');
+                const panel = document.getElementById('add-exercise-modal-panel');
+                panel.classList.add('scale-95', 'opacity-0');
+                modal.classList.add('opacity-0');
+                setTimeout(() => modal.classList.add('hidden'), 300);
+            };
+            
+            document.getElementById('close-add-exercise-modal').addEventListener('click', closeAddExerciseModal);
+            document.getElementById('add-exercise-modal').addEventListener('click', (e) => {
+                if(e.target.id === 'add-exercise-modal') closeAddExerciseModal();
+            });
+
+            const renderAddExerciseList = (context = 'log', searchTerm = '') => { // context parameter added
+                const list = document.getElementById('add-exercise-list');
+                list.innerHTML = '';
+                const filtered = exercises.filter(ex => ex.name.toLowerCase().includes(searchTerm.toLowerCase()));
+                filtered.forEach(ex => {
+                    const item = document.createElement('div');
+                    item.className = 'p-3 hover:bg-stone-100 rounded-md cursor-pointer flex justify-between items-center';
+                    item.innerHTML = `
+                        <div>
+                            <div class="font-medium">${ex.name}</div>
+                            <div class="text-xs text-stone-500">${ex.targetMuscles.join(', ')}</div>
+                        </div>
+                        <button class="select-exercise-btn text-sm text-teal-600 font-medium" data-id="${ex.id}" data-context="${context}">Add</button>
+                    `;
+                    list.appendChild(item);
+                });
+            };
+            
+            document.getElementById('add-exercise-search').addEventListener('input', e => {
+                const context = document.getElementById('add-exercise-list').querySelector('.select-exercise-btn')?.dataset.context || 'log';
+                renderAddExerciseList(context, e.target.value);
+            });
+
+            document.getElementById('add-exercise-list').addEventListener('click', e => {
+                if(e.target.matches('.select-exercise-btn')){
+                    const exerciseId = parseInt(e.target.dataset.id);
+                    const context = e.target.dataset.context;
+                    
+                    if (context === 'log') {
+                        if (!currentWorkout.some(ex => ex.id === exerciseId)) {
+                            currentWorkout.push({id: exerciseId, sets: [{reps: 5, weight: 100}]});
+                            renderLoggedExercises();
+                        }
+                    } else if (context === 'template') {
+                        if (!currentNewTemplateExercises.some(ex => ex.exerciseId === exerciseId)) {
+                            currentNewTemplateExercises.push({exerciseId: exerciseId, defaultSets: 3, defaultReps: 10});
+                            renderNewTemplateExercises();
+                        }
+                    }
+                    closeAddExerciseModal();
+                }
+            });
+
+            document.getElementById('save-workout-btn').addEventListener('click', () => {
+                const name = document.getElementById('workout-name').value;
+                const date = document.getElementById('workout-date').value;
+                if(!name || !date || currentWorkout.length === 0){
+                    showToast('Please fill out name, date, and add at least one exercise.');
+                    return;
+                }
+                const newLog = {
+                    name,
+                    date,
+                    exercises: currentWorkout.map(ex => ({
+                        id: ex.id,
+                        name: exercises.find(e => e.id === ex.id).name,
+                        sets: ex.sets
+                    }))
+                };
+                workoutLogs.push(newLog);
+                currentWorkout = [];
+                document.getElementById('workout-name').value = '';
+                renderLoggedExercises();
+                populateProgressSelect();
+                showToast('Workout saved successfully!');
+                document.getElementById('workout-summary-section').classList.remove('hidden');
+                setTimeout(() => window.location.hash = "#log-workout", 500); // Stay on log workout, show summary section
+            });
+
+            const handleNav = () => {
+                const hash = window.location.hash || '#dashboard';
+                document.querySelectorAll('.nav-link').forEach(link => {
+                    link.classList.toggle('active', link.getAttribute('href') === hash);
+                });
+                 document.querySelectorAll('main section').forEach(section => {
+                    section.classList.toggle('hidden', section.id !== hash.substring(1));
+                });
+            };
+            window.addEventListener('hashchange', handleNav);
+            
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const targetId = this.getAttribute('href');
+                    window.location.hash = targetId;
+                    document.querySelector(targetId).scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                });
+            });
+
+            const mobileMenuButton = document.getElementById('mobile-menu-button');
+            const mobileMenu = document.getElementById('mobile-menu');
+            mobileMenuButton.addEventListener('click', () => {
+                mobileMenu.classList.toggle('hidden');
+            });
+            
+            document.querySelectorAll('#mobile-menu a').forEach(link => {
+                link.addEventListener('click', () => mobileMenu.classList.add('hidden'));
+            });
+
+            document.getElementById('workout-date').valueAsDate = new Date();
+
+            renderExerciseLibrary();
+            populateFilterButtons();
+            populateProgressSelect();
+            if (window.location.hash) {
+                handleNav();
+            } else {
+                 window.location.hash = '#dashboard';
+            }
+
+            // Gemini API Integration - Workout Plan Generator
+
+            const openPlanGeneratorModal = () => {
+                const modal = document.getElementById('plan-generator-modal');
+                const panel = document.getElementById('plan-generator-modal-panel');
+                document.getElementById('generated-plan-output').innerHTML = '<p class="text-stone-500">Your personalized workout plan will appear here.</p>'; // Clear previous output
+                modal.classList.remove('hidden');
+                setTimeout(() => {
+                    panel.classList.remove('scale-95', 'opacity-0');
+                    modal.classList.remove('opacity-0');
+                }, 10);
+            };
+
+            const closePlanGeneratorModal = () => {
+                const modal = document.getElementById('plan-generator-modal');
+                const panel = document.getElementById('plan-generator-modal-panel');
+                panel.classList.add('scale-95', 'opacity-0');
+                modal.classList.add('opacity-0');
+                setTimeout(() => modal.classList.add('hidden'), 300);
+            };
+
+            document.getElementById('open-plan-generator-btn').addEventListener('click', openPlanGeneratorModal);
+            document.getElementById('close-plan-generator-modal').addEventListener('click', closePlanGeneratorModal);
+            document.getElementById('plan-generator-modal').addEventListener('click', (e) => {
+                if(e.target.id === 'plan-generator-modal') closePlanGeneratorModal();
+            });
+
+            const generateWorkoutPlan = async () => {
+                const goal = document.getElementById('goal-select').value;
+                const equipment = document.getElementById('equipment-select').value;
+                const frequency = document.getElementById('frequency-select').value;
+                const duration = document.getElementById('duration-select').value;
+                const outputDiv = document.getElementById('generated-plan-output');
+                const loadingSpinner = document.getElementById('plan-generator-loading');
+                const generateButton = document.getElementById('generate-plan-btn');
+
+                loadingSpinner.classList.remove('hidden');
+                generateButton.disabled = true;
+                outputDiv.innerHTML = '<p class="text-stone-500 flex items-center justify-center"><span class="loading-spinner mr-2"></span> Generating your plan...</p>';
+
+                let chatHistory = [];
+                const prompt = `Generate a ${frequency} times per week workout plan for ${goal} using ${equipment} for ${duration} minutes per session. Provide the output as a JSON array of daily workouts, each with a 'day' (e.g., Day 1, Day 2), 'focus' (e.g., Full Body, Upper Body), and an 'exercises' array. For each exercise, include 'name', 'sets', 'reps', and 'notes'. Ensure sets and reps are appropriate for the goal.`;
+                
+                chatHistory.push({ role: "user", parts: [{ text: prompt }] });
+                const payload = { 
+                    contents: chatHistory,
+                    generationConfig: {
+                        responseMimeType: "application/json",
+                        responseSchema: {
+                            type: "ARRAY",
+                            items: {
+                                type: "OBJECT",
+                                properties: {
+                                    "day": { "type": "STRING" },
+                                    "focus": { "type": "STRING" },
+                                    "exercises": {
+                                        "type": "ARRAY",
+                                        "items": {
+                                            "type": "OBJECT",
+                                            "properties": {
+                                                "name": { "type": "STRING" },
+                                                "sets": { "type": "STRING" },
+                                                "reps": { "type": "STRING" },
+                                                "notes": { "type": "STRING" }
+                                            }
+                                        }
+                                    }
+                                },
+                                "propertyOrdering": ["day", "focus", "exercises"]
+                            }
+                        }
+                    }
+                };
+                const apiKey = "";
+                const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${apiKey}`;
+
+                try {
+                    const response = await fetch(apiUrl, {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify(payload)
+                    });
+                    const result = await response.json();
+
+                    if (result.candidates && result.candidates.length > 0 &&
+                        result.candidates[0].content && result.candidates[0].content.parts &&
+                        result.candidates[0].content.parts.length > 0) {
+                        const jsonText = result.candidates[0].content.parts[0].text;
+                        const plan = JSON.parse(jsonText);
+                        
+                        let htmlOutput = '<h4 class="text-lg font-semibold mb-4">Your Custom Workout Plan:</h4>';
+                        plan.forEach(day => {
+                            htmlOutput += `<div class="mb-6 p-4 bg-white rounded-lg shadow-sm">`;
+                            htmlOutput += `<h5 class="font-bold text-teal-700">${day.day}: ${day.focus}</h5>`;
+                            htmlOutput += `<ul class="list-disc pl-5 mt-2 space-y-1">`;
+                            day.exercises.forEach(ex => {
+                                htmlOutput += `<li><strong>${ex.name}</strong>: ${ex.sets} sets of ${ex.reps} reps. <em>${ex.notes}</em></li>`;
+                            });
+                            htmlOutput += `</ul></div>`;
+                        });
+                        outputDiv.innerHTML = htmlOutput;
+
+                    } else {
+                        outputDiv.innerHTML = '<p class="text-red-500">Failed to generate plan. Please try again.</p>';
+                    }
+                } catch (error) {
+                    outputDiv.innerHTML = `<p class="text-red-500">Error: ${error.message}. Could not generate plan.</p>`;
+                    console.error('Gemini API Error:', error);
+                } finally {
+                    loadingSpinner.classList.add('hidden');
+                    generateButton.disabled = false;
+                }
+            };
+
+            document.getElementById('generate-plan-btn').addEventListener('click', generateWorkoutPlan);
+
+            // Gemini API Integration - Exercise Variation Suggester
+            const suggestExerciseVariations = async (exerciseName) => {
+                const variationsOutputDiv = document.getElementById('variations-output');
+                const variationsLoadingSpinner = document.getElementById('variations-loading');
+                const suggestButton = document.getElementById('suggest-variations-btn');
+
+                variationsLoadingSpinner.classList.remove('hidden');
+                suggestButton.disabled = true;
+                variationsOutputDiv.classList.remove('hidden');
+                variationsOutputDiv.innerHTML = '<p class="text-stone-500 flex items-center justify-center"><span class="loading-spinner mr-2"></span> Suggesting variations...</p>';
+
+                let chatHistory = [];
+                const prompt = `Suggest 3-5 variations for the "${exerciseName}" exercise, including a brief description for each. Provide the output as a JSON array of objects, each with 'name' and 'description'.`;
+                
+                chatHistory.push({ role: "user", parts: [{ text: prompt }] });
+                const payload = { 
+                    contents: chatHistory,
+                    generationConfig: {
+                        responseMimeType: "application/json",
+                        responseSchema: {
+                            type: "ARRAY",
+                            items: {
+                                type: "OBJECT",
+                                properties: {
+                                    "name": { "type": "STRING" },
+                                    "description": { "type": "STRING" }
+                                }
+                            }
+                        }
+                    }
+                };
+                const apiKey = "";
+                const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${apiKey}`;
+
+                try {
+                    const response = await fetch(apiUrl, {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify(payload)
+                    });
+                    const result = await response.json();
+
+                    if (result.candidates && result.candidates.length > 0 &&
+                        result.candidates[0].content && result.candidates[0].content.parts &&
+                        result.candidates[0].content.parts.length > 0) {
+                        const jsonText = result.candidates[0].content.parts[0].text;
+                        const variations = JSON.parse(jsonText);
+                        
+                        let htmlOutput = '<h4 class="font-semibold mb-2">Variations:</h4>';
+                        htmlOutput += '<ul class="list-disc pl-5 space-y-1">';
+                        variations.forEach(v => {
+                            htmlOutput += `<li><strong>${v.name}</strong>: ${v.description}</li>`;
+                        });
+                        htmlOutput += '</ul>';
+                        variationsOutputDiv.innerHTML = htmlOutput;
+
+                    } else {
+                        variationsOutputDiv.innerHTML = '<p class="text-red-500">Failed to suggest variations. Please try again.</p>';
+                    }
+                } catch (error) {
+                    variationsOutputDiv.innerHTML = `<p class="text-red-500">Error: ${error.message}. Could not suggest variations.</p>`;
+                    console.error('Gemini API Error:', error);
+                } finally {
+                    variationsLoadingSpinner.classList.add('hidden');
+                    suggestButton.disabled = false;
+                }
+            };
+
+            // Gemini API Integration - Workout Summary & Analysis
+            document.getElementById('generate-summary-btn').addEventListener('click', async () => {
+                const summaryOutputDiv = document.getElementById('workout-summary-output');
+                const summaryLoadingSpinner = document.getElementById('summary-loading');
+                const generateSummaryButton = document.getElementById('generate-summary-btn');
+
+                if (workoutLogs.length === 0) {
+                    summaryOutputDiv.innerHTML = '<p class="text-red-500">No workout data to summarize. Log a workout first!</p>';
+                    return;
+                }
+
+                summaryLoadingSpinner.classList.remove('hidden');
+                generateSummaryButton.disabled = true;
+                summaryOutputDiv.innerHTML = '<p class="text-stone-500 flex items-center justify-center"><span class="loading-spinner mr-2"></span> Analyzing workout...</p>';
+
+                const lastWorkout = workoutLogs[workoutLogs.length - 1];
+                const workoutDetails = JSON.stringify(lastWorkout, null, 2);
+
+                let chatHistory = [];
+                const prompt = `Analyze the following workout log data and provide a concise summary. Highlight any potential personal bests (e.g., highest weight for an exercise, most reps at a certain weight). Offer a brief motivational feedback or a suggestion for the next session.
+                
+                Workout Log Data:
+                ${workoutDetails}`;
+                
+                chatHistory.push({ role: "user", parts: [{ text: prompt }] });
+                const payload = { 
+                    contents: chatHistory,
+                    generationConfig: {
+                        responseMimeType: "text/plain"
+                    }
+                };
+                const apiKey = "";
+                const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${apiKey}`;
+
+                try {
+                    const response = await fetch(apiUrl, {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify(payload)
+                    });
+                    const result = await response.json();
+
+                    if (result.candidates && result.candidates.length > 0 &&
+                        result.candidates[0].content && result.candidates[0].content.parts &&
+                        result.candidates[0].content.parts.length > 0) {
+                        const summaryText = result.candidates[0].content.parts[0].text;
+                        summaryOutputDiv.innerHTML = `<p class="whitespace-pre-wrap">${summaryText}</p>`;
+                    } else {
+                        summaryOutputDiv.innerHTML = '<p class="text-red-500">Failed to generate summary. Please try again.</p>';
+                    }
+                } catch (error) {
+                    summaryOutputDiv.innerHTML = `<p class="text-red-500">Error: ${error.message}. Could not generate summary.</p>`;
+                    console.error('Gemini API Error:', error);
+                } finally {
+                    summaryLoadingSpinner.classList.add('hidden');
+                    generateSummaryButton.disabled = false;
+                }
+            });
+
+            // Gemini API Integration - Injury Prevention Tips
+            const getInjuryPreventionTips = async (exerciseName, targetMuscles) => {
+                const injuryTipsOutputDiv = document.getElementById('injury-tips-output');
+                const injuryTipsLoadingSpinner = document.getElementById('injury-tips-loading');
+                const getTipsButton = document.getElementById('get-injury-tips-btn');
+
+                injuryTipsLoadingSpinner.classList.remove('hidden');
+                getTipsButton.disabled = true;
+                injuryTipsOutputDiv.classList.remove('hidden');
+                injuryTipsOutputDiv.innerHTML = '<p class="text-stone-500 flex items-center justify-center"><span class="loading-spinner mr-2"></span> Getting tips...</p>';
+
+                let chatHistory = [];
+                const prompt = `Provide 3-5 concise injury prevention tips for the "${exerciseName}" exercise, focusing on the ${targetMuscles} muscle groups. Format as a bulleted list.`;
+                
+                chatHistory.push({ role: "user", parts: [{ text: prompt }] });
+                const payload = { 
+                    contents: chatHistory,
+                    generationConfig: {
+                        responseMimeType: "text/plain"
+                    }
+                };
+                const apiKey = "";
+                const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${apiKey}`;
+
+                try {
+                    const response = await fetch(apiUrl, {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify(payload)
+                    });
+                    const result = await response.json();
+
+                    if (result.candidates && result.candidates.length > 0 &&
+                        result.candidates[0].content && result.candidates[0].content.parts &&
+                        result.candidates[0].content.parts.length > 0) {
+                        const tipsText = result.candidates[0].content.parts[0].text;
+                        injuryTipsOutputDiv.innerHTML = `<h4 class="font-semibold mb-2">Injury Prevention Tips:</h4><p class="whitespace-pre-wrap">${tipsText}</p>`;
+                    } else {
+                        injuryTipsOutputDiv.innerHTML = '<p class="text-red-500">Failed to get tips. Please try again.</p>';
+                    }
+                } catch (error) {
+                    injuryTipsOutputDiv.innerHTML = `<p class="text-red-500">Error: ${error.message}. Could not get tips.</p>`;
+                    console.error('Gemini API Error:', error);
+                } finally {
+                    injuryTipsLoadingSpinner.classList.add('hidden');
+                    getTipsButton.disabled = false;
+                }
+            };
+
+            // Workout Template Logic
+            const populateWorkoutTemplatesSelect = () => {
+                const select = document.getElementById('workout-template-select');
+                select.innerHTML = '<option value="">-- Select a template --</option>'; // Clear and add default
+                workoutTemplates.forEach(template => {
+                    const option = document.createElement('option');
+                    option.value = template.id;
+                    option.textContent = template.name;
+                    select.appendChild(option);
+                });
+            };
+
+            const loadWorkoutTemplate = () => {
+                const templateId = parseInt(document.getElementById('workout-template-select').value);
+                const selectedTemplate = workoutTemplates.find(t => t.id === templateId);
+
+                if (selectedTemplate) {
+                    currentWorkout = selectedTemplate.exercises.map(ex => ({
+                        id: ex.exerciseId,
+                        sets: Array.from({ length: ex.defaultSets }).map(() => ({ reps: ex.defaultReps, weight: 0 }))
+                    }));
+                    renderLoggedExercises();
+                    showToast(`${selectedTemplate.name} loaded!`);
+                } else {
+                    showToast('Please select a valid workout template.');
+                }
+            };
+
+            document.getElementById('load-template-btn').addEventListener('click', loadWorkoutTemplate);
+
+            // New: Create Template Modal Logic
+            const openCreateTemplateModal = () => {
+                const modal = document.getElementById('create-template-modal');
+                const panel = document.getElementById('create-template-modal-panel');
+                document.getElementById('new-template-name').value = '';
+                currentNewTemplateExercises = [];
+                renderNewTemplateExercises();
+                modal.classList.remove('hidden');
+                setTimeout(() => {
+                    panel.classList.remove('scale-95', 'opacity-0');
+                    modal.classList.remove('opacity-0');
+                }, 10);
+            };
+
+            const closeCreateTemplateModal = () => {
+                const modal = document.getElementById('create-template-modal');
+                const panel = document.getElementById('create-template-modal-panel');
+                panel.classList.add('scale-95', 'opacity-0');
+                modal.classList.add('opacity-0');
+                setTimeout(() => modal.classList.add('hidden'), 300);
+            };
+
+            document.getElementById('open-create-template-btn').addEventListener('click', openCreateTemplateModal);
+            document.getElementById('close-create-template-modal').addEventListener('click', closeCreateTemplateModal);
+            document.getElementById('create-template-modal').addEventListener('click', (e) => {
+                if(e.target.id === 'create-template-modal') closeCreateTemplateModal();
+            });
+
+            const renderNewTemplateExercises = () => {
+                const container = document.getElementById('template-exercises-container');
+                container.innerHTML = '';
+                if (currentNewTemplateExercises.length === 0) {
+                    container.innerHTML = '<p class="text-stone-500">Add exercises to your template below.</p>';
+                    return;
+                }
+                currentNewTemplateExercises.forEach((ex, index) => {
+                    const exerciseData = exercises.find(e => e.id === ex.exerciseId);
+                    const exerciseDiv = document.createElement('div');
+                    exerciseDiv.className = 'p-4 border rounded-lg bg-stone-50';
+                    exerciseDiv.innerHTML = `
+                        <div class="flex justify-between items-center">
+                            <h4 class="font-semibold text-lg">${exerciseData.name}</h4>
+                            <button data-index="${index}" class="remove-template-exercise-btn text-red-500 hover:text-red-700">&times;</button>
+                        </div>
+                        <div class="mt-2 text-xs text-stone-500">${exerciseData.targetMuscles.join(', ')}</div>
+                        <div class="grid grid-cols-2 gap-4 mt-2">
+                            <div>
+                                <label class="block text-sm font-medium text-stone-700">Default Sets</label>
+                                <input type="number" value="${ex.defaultSets}" class="mt-1 block w-full rounded-md border-stone-300 text-sm p-1 template-sets-input" data-index="${index}">
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium text-stone-700">Default Reps</label>
+                                <input type="text" value="${ex.defaultReps}" class="mt-1 block w-full rounded-md border-stone-300 text-sm p-1 template-reps-input" data-index="${index}">
+                            </div>
+                        </div>
+                    `;
+                    container.appendChild(exerciseDiv);
+                });
+            };
+
+            document.getElementById('template-exercises-container').addEventListener('click', e => {
+                if(e.target.matches('.remove-template-exercise-btn')){
+                    const index = parseInt(e.target.dataset.index);
+                    currentNewTemplateExercises.splice(index, 1);
+                    renderNewTemplateExercises();
+                }
+            });
+
+            document.getElementById('template-exercises-container').addEventListener('input', e => {
+                const index = parseInt(e.target.dataset.index);
+                if(e.target.matches('.template-sets-input')){
+                    currentNewTemplateExercises[index].defaultSets = parseInt(e.target.value) || 0;
+                }
+                if(e.target.matches('.template-reps-input')){
+                    currentNewTemplateExercises[index].defaultReps = e.target.value;
+                }
+            });
+
+            document.getElementById('add-template-exercise-btn').addEventListener('click', () => {
+                const modal = document.getElementById('add-exercise-modal');
+                const panel = document.getElementById('add-exercise-modal-panel');
+                renderAddExerciseList('template'); // Indicate this is for template creation
+                modal.classList.remove('hidden');
+                setTimeout(() => {
+                    panel.classList.remove('scale-95', 'opacity-0');
+                    modal.classList.remove('opacity-0');
+                }, 10);
+            });
+
+            document.getElementById('save-template-btn').addEventListener('click', () => {
+                const templateName = document.getElementById('new-template-name').value.trim();
+                if (!templateName) {
+                    showToast('Template name cannot be empty.');
+                    return;
+                }
+                if (currentNewTemplateExercises.length === 0) {
+                    showToast('Please add at least one exercise to the template.');
+                    return;
+                }
+
+                const newTemplateId = workoutTemplates.length > 0 ? Math.max(...workoutTemplates.map(t => t.id)) + 1 : 1;
+                const newTemplate = {
+                    id: newTemplateId,
+                    name: templateName,
+                    exercises: currentNewTemplateExercises.map(ex => ({
+                        exerciseId: ex.exerciseId,
+                        defaultSets: ex.defaultSets,
+                        defaultReps: ex.defaultReps
+                    }))
+                };
+                workoutTemplates.push(newTemplate);
+                populateWorkoutTemplatesSelect();
+                closeCreateTemplateModal();
+                showToast(`Template "${templateName}" saved!`);
+            });
+
+            // Initial calls for new features
+            populateWorkoutTemplatesSelect();
+        });
+    </script>
 </body>
-</html> 
+</html>
