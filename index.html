@@ -46,6 +46,10 @@
             0% { transform: rotate(0deg); }
             100% { transform: rotate(360deg); }
         }
+        .history-row:hover {
+            background-color: #f0fdf4; /* teal-50 */
+            cursor: pointer;
+        }
     </style>
 </head>
 <body class="bg-stone-50 text-stone-800">
@@ -150,7 +154,11 @@
                             Add Exercise
                         </button>
                     </div>
-                     <div class="mt-8 border-t pt-6 flex justify-end">
+                     <div class="mt-8 border-t pt-6 flex justify-end gap-4">
+                        <input type="hidden" id="edit-log-index" value="-1">
+                        <button id="cancel-edit-btn" class="hidden inline-flex items-center px-6 py-3 border border-stone-300 text-base font-medium rounded-md shadow-sm text-stone-700 bg-white hover:bg-stone-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-stone-500">
+                            Cancel Edit
+                        </button>
                         <button id="save-workout-btn" class="inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-md shadow-sm text-white bg-teal-600 hover:bg-teal-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-teal-500">
                             Save Workout
                         </button>
@@ -169,10 +177,15 @@
 
         <section id="progress" class="py-12 min-h-screen">
             <h2 class="text-3xl font-bold text-stone-900">My Progress</h2>
-            <p class="mt-2 text-lg text-stone-600">Select an exercise to see how your strength has improved over time.</p>
-            <div class="mt-8">
-                <label for="progress-exercise-select" class="block text-sm font-medium text-stone-700">Select Exercise</label>
-                <select id="progress-exercise-select" class="mt-1 block w-full max-w-xs rounded-md border-stone-300 shadow-sm focus:border-teal-500 focus:ring-teal-500 sm:text-sm"></select>
+            <p class="mt-2 text-lg text-stone-600">Select an exercise to see how your strength has improved over time. Click a workout log entry to edit it.</p>
+            <div class="mt-8 flex flex-col sm:flex-row sm:items-end gap-4">
+                <div class="flex-grow">
+                    <label for="progress-exercise-select" class="block text-sm font-medium text-stone-700">Select Exercise</label>
+                    <select id="progress-exercise-select" class="mt-1 block w-full max-w-xs rounded-md border-stone-300 shadow-sm focus:border-teal-500 focus:ring-teal-500 sm:text-sm"></select>
+                </div>
+                <button id="clear-all-logs-btn" class="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-red-600 hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500">
+                    Clear All Logs
+                </button>
             </div>
             <div class="mt-8 bg-white p-4 sm:p-6 rounded-2xl shadow-xl">
                 <div class="chart-container">
@@ -186,9 +199,9 @@
                         <thead class="bg-stone-50">
                             <tr>
                                 <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-stone-500 uppercase tracking-wider">Date</th>
-                                <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-stone-500 uppercase tracking-wider">Sets</th>
-                                <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-stone-500 uppercase tracking-wider">Reps</th>
-                                <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-stone-500 uppercase tracking-wider">Weight (lbs)</th>
+                                <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-stone-500 uppercase tracking-wider">Workout Name</th>
+                                <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-stone-500 uppercase tracking-wider">Exercises Count</th>
+                                <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-stone-500 uppercase tracking-wider">Max Weight (for selected exercise)</th>
                             </tr>
                         </thead>
                         <tbody id="progress-history-table" class="bg-white divide-y divide-stone-200">
@@ -400,6 +413,7 @@
             let progressChart;
             let currentWorkout = [];
             let currentNewTemplateExercises = []; // New state for template creation
+            let editingLogIndex = -1; // -1 means not editing, otherwise it's the index of the log being edited
 
             const showToast = (message) => {
                 const toast = document.getElementById('toast');
@@ -592,20 +606,38 @@
                  document.getElementById('history-exercise-name').textContent = exerciseName;
                  const tableBody = document.getElementById('progress-history-table');
                  tableBody.innerHTML = '';
-                 if(history.length === 0){
-                     tableBody.innerHTML = `<tr><td colspan="4" class="text-center py-4 text-stone-500">No logs found for this exercise.</td></tr>`;
+                 if(workoutLogs.length === 0){ // Check overall workoutLogs for empty state
+                     tableBody.innerHTML = `<tr><td colspan="4" class="text-center py-4 text-stone-500">No workout logs available.</td></tr>`;
                      return;
                  }
-                 history.reverse().forEach(log => {
-                     const row = document.createElement('tr');
-                     row.innerHTML = `
+
+                 workoutLogs.forEach((log, index) => { // Iterate through actual workoutLogs for full history
+                    const performedExercise = log.exercises.find(e => e.name === exerciseName);
+                    const maxWeightForExercise = performedExercise ? Math.max(...performedExercise.sets.map(s => s.weight)) : 'N/A';
+                    
+                    const row = document.createElement('tr');
+                    row.className = 'history-row'; // Add class for hover effect and click listener
+                    row.dataset.logIndex = index; // Store the index for editing
+                    row.innerHTML = `
                         <td class="px-6 py-4 whitespace-nowrap text-sm text-stone-500">${log.date}</td>
-                        <td class="px-6 py-4 whitespace-nowrap text-sm text-stone-500">${log.sets}</td>
-                        <td class="px-6 py-4 whitespace-nowrap text-sm text-stone-500">${log.reps}</td>
-                        <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-stone-900">${log.weight}</td>
-                     `;
-                     tableBody.appendChild(row);
+                        <td class="px-6 py-4 whitespace-nowrap text-sm text-stone-900 font-medium">${log.name}</td>
+                        <td class="px-6 py-4 whitespace-nowrap text-sm text-stone-500">${log.exercises.length}</td>
+                        <td class="px-6 py-4 whitespace-nowrap text-sm text-stone-500">${maxWeightForExercise}</td>
+                    `;
+                    tableBody.appendChild(row);
                  });
+                 
+                 // Add click listener to the table body for delegation
+                 tableBody.removeEventListener('click', handleHistoryRowClick); // Prevent multiple listeners
+                 tableBody.addEventListener('click', handleHistoryRowClick);
+            };
+
+            const handleHistoryRowClick = (e) => {
+                const row = e.target.closest('.history-row');
+                if (row) {
+                    const logIndex = parseInt(row.dataset.logIndex);
+                    editWorkout(logIndex);
+                }
             };
 
             const renderLoggedExercises = () => {
@@ -747,7 +779,7 @@
                 }
             });
 
-            document.getElementById('save-workout-btn').addEventListener('click', () => {
+            const saveWorkout = () => {
                 const name = document.getElementById('workout-name').value;
                 const date = document.getElementById('workout-date').value;
                 if(!name || !date || currentWorkout.length === 0){
@@ -763,15 +795,53 @@
                         sets: ex.sets
                     }))
                 };
-                workoutLogs.push(newLog);
-                currentWorkout = [];
-                document.getElementById('workout-name').value = '';
-                renderLoggedExercises();
+
+                if (editingLogIndex !== -1) {
+                    workoutLogs[editingLogIndex] = newLog; // Update existing log
+                    showToast('Workout updated successfully!');
+                } else {
+                    workoutLogs.push(newLog); // Add new log
+                    showToast('Workout saved successfully!');
+                }
+                
+                resetLogForm();
                 populateProgressSelect();
-                showToast('Workout saved successfully!');
                 document.getElementById('workout-summary-section').classList.remove('hidden');
-                setTimeout(() => window.location.hash = "#log-workout", 500); // Stay on log workout, show summary section
-            });
+                setTimeout(() => window.location.hash = "#log-workout", 500);
+            };
+
+            document.getElementById('save-workout-btn').addEventListener('click', saveWorkout);
+
+            const resetLogForm = () => {
+                document.getElementById('workout-name').value = '';
+                document.getElementById('workout-date').valueAsDate = new Date();
+                currentWorkout = [];
+                renderLoggedExercises();
+                editingLogIndex = -1;
+                document.getElementById('save-workout-btn').textContent = 'Save Workout';
+                document.getElementById('cancel-edit-btn').classList.add('hidden');
+                document.getElementById('workout-summary-output').innerHTML = ''; // Clear summary output
+                document.getElementById('workout-summary-section').classList.add('hidden'); // Hide summary section
+            };
+
+            const editWorkout = (logIndex) => {
+                const logToEdit = workoutLogs[logIndex];
+                document.getElementById('workout-name').value = logToEdit.name;
+                document.getElementById('workout-date').value = logToEdit.date;
+                currentWorkout = logToEdit.exercises.map(ex => ({
+                    id: ex.id,
+                    sets: ex.sets.map(set => ({...set})) // Deep copy sets to avoid modifying original log directly
+                }));
+                renderLoggedExercises();
+                editingLogIndex = logIndex;
+                document.getElementById('save-workout-btn').textContent = 'Update Workout';
+                document.getElementById('cancel-edit-btn').classList.remove('hidden');
+                window.location.hash = "#log-workout"; // Navigate to log workout section
+                document.getElementById('workout-summary-output').innerHTML = ''; // Clear summary output
+                document.getElementById('workout-summary-section').classList.add('hidden'); // Hide summary section
+            };
+
+            document.getElementById('cancel-edit-btn').addEventListener('click', resetLogForm);
 
             const handleNav = () => {
                 const hash = window.location.hash || '#dashboard';
@@ -1252,6 +1322,15 @@
                 populateWorkoutTemplatesSelect();
                 closeCreateTemplateModal();
                 showToast(`Template "${templateName}" saved!`);
+            });
+
+            // New: Clear All Logs functionality
+            document.getElementById('clear-all-logs-btn').addEventListener('click', () => {
+                if (confirm('Are you sure you want to clear all workout logs? This action cannot be undone.')) {
+                    workoutLogs = [];
+                    populateProgressSelect(); // Re-render progress chart and table
+                    showToast('All workout logs cleared!');
+                }
             });
 
             // Initial calls for new features
